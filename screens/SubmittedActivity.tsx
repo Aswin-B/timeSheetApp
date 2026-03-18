@@ -62,6 +62,7 @@ const SubmittedActivity = () => {
       <FlatList
         data={totalActivity}
         keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => 
         (
           <View style={styles.activityBox}>

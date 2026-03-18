@@ -24,6 +24,7 @@ const PendingLeaves = () => {
       <FlatList
         data={filteredActivity}
         keyExtractor={(item) => item.id.toString()}
+        showsVerticalScrollIndicator={false}
         renderItem = {({item}) => (
           <View style={styles.activityBox}>
             <Text style={styles.addedActivityText}>{item.activityName}</Text>

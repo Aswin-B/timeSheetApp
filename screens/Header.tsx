@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
+// import { useNavigation } from '@react-navigation/native';
 
 const Header = ({navigation} : any) => {
+  // const navigate = useNavigation();
   return (
     <View style={styles.header}>
 
@@ -15,7 +17,7 @@ const Header = ({navigation} : any) => {
 
       <Text style={styles.title}>Time Sheet</Text>
 
-      <Icon name='person' size={24} color='white' />
+      <Icon name='person' size={24} color='white' onPress={() => navigation.navigate('Account')}/>
       {/* <Text style={{ color: 'white' }}>Admin</Text> */}
 
     </View>
