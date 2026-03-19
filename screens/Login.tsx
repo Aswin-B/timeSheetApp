@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, Button, TextInput, Alert } from 'react-native'
+import { View, Text, StyleSheet, Button, TextInput, Alert, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { Users } from '../data/Users';
 import Toast from 'react-native-toast-message';
 import { ActivityContext } from '../context/ActivityContext';
 import { useContext } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Login = ({ navigation }: any) => {
 
@@ -11,6 +12,8 @@ const Login = ({ navigation }: any) => {
 
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+
+    const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const handleRegister = () => {
         if(!username){
@@ -100,8 +103,17 @@ const Login = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
         <Text style={styles.appTitle}>Welcome To TimeSheet App</Text>
-        <TextInput placeholder='Username' style={styles.input} value={username} onChangeText={(text) => setUsername(text)} />
-        <TextInput placeholder='Password' style={styles.password} secureTextEntry value={password} onChangeText={(text) => setPassword(text)} />
+        <View style={styles.inputContainer}>
+            <TextInput placeholder='Username' style={styles.input} value={username} onChangeText={(text) => setUsername(text)} />
+            <TextInput placeholder='Password' style={styles.password} secureTextEntry={!showPassword} value={password} onChangeText={(text) => setPassword(text)} />
+            <TouchableOpacity style={styles.eyeIcon}>
+                {
+                    !showPassword ? (<Icon name="eye-off-outline" size={20} color="gray" style={styles.eyeIcon} onPress={()=> setShowPassword(!showPassword)}></Icon>) 
+                    : 
+                    (<Icon name="eye-outline" size={20} color="gray" style={styles.eyeIcon} onPress={()=> setShowPassword(!showPassword)}></Icon>)
+                }
+            </TouchableOpacity>
+        </View>
         <View style={styles.btnContainer}>
             <Button title='Login' onPress={handleLogin}></Button>
             <Button title='Register' onPress={handleRegister}/>
@@ -139,6 +151,19 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderRadius: 5,
+  },
+  inputContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // padding: 20,
+    // gap: 10,
+    position: 'relative',
+  },
+  eyeIcon: {
+    position: 'absolute',
+    top: 30,
+    right: 30,
   },
   btnContainer: {
     flexDirection: 'row',
