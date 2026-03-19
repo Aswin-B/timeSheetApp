@@ -18,8 +18,19 @@ export const ActivityProvider = ({ children }: any) => {
         {id: 12, activityName: "Shift Change Request" },
         {id: 13, activityName: "Overtime Request" }
       ]);
+      const [usersData, setUsersData] = useState([
+            {
+                username: "aswin@gmail.com",
+                password: "aswin@123"
+            },
+            {
+                username: "john@gmail.com",
+                password: "john@123"
+            }
+        ]);
+        const [currentUser, setCurrentUser] = useState<any>(null);
     return(
-        <ActivityContext.Provider value={{ totalActivity, setTotalActivity }}>
+        <ActivityContext.Provider value={{ totalActivity, setTotalActivity, usersData, setUsersData, currentUser, setCurrentUser }}>
             {children}
         </ActivityContext.Provider>
     )

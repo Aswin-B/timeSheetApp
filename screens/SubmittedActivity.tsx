@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 // import DatePicker from 'react-native-date-picker'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ActivityContext } from '../context/ActivityContext';
+import Toast from 'react-native-toast-message';
 
 
 const SubmittedActivity = () => {
@@ -24,6 +25,13 @@ const SubmittedActivity = () => {
       }
       setTotalActivity([...totalActivity, newActivity]);
       setActivity('');
+      Toast.show({
+        type: 'success',
+        text1: 'Success',
+        text2: 'Activity added successfully !!',
+        position: 'bottom',
+        bottomOffset: 100
+      });
     }
   }
 

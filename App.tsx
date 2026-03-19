@@ -23,6 +23,9 @@ import DrawerNav from './routes/DrawerNav';
 import BottomTabNav from './routes/BottomTabNav';
 import { Activity } from 'react';
 import { ActivityProvider } from './context/ActivityContext';
+import Toast from 'react-native-toast-message';
+import Login from './screens/Login';
+import RootStack from './routes/RootStack';
 
 
 
@@ -33,13 +36,15 @@ function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ActivityProvider>
+      <ActivityProvider>        
         <NavigationContainer>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           {/* <DrawerNav/> */}
-          <BottomTabNav/>
+          {/* <BottomTabNav/> */}
+          <RootStack/>
         </NavigationContainer>
       </ActivityProvider>
+      <Toast/>
     </GestureHandlerRootView>
   );
 }
