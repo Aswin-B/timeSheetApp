@@ -21,11 +21,11 @@ export const ActivityProvider = ({ children }: any) => {
       const [usersData, setUsersData] = useState([
             {
                 username: "aswin@gmail.com",
-                password: "aswin@123"
+                password: "Aswin@123"
             },
             {
                 username: "john@gmail.com",
-                password: "john@123"
+                password: "John@123"
             }
         ]);
         const [currentUser, setCurrentUser] = useState<any>(null);
